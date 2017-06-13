@@ -2,11 +2,12 @@
   "images" : [
     {
       "idiom" : "universal",
-      "filename" : "tv_32.png",
+      "filename" : "ic_star_borde.png",
       "scale" : "1x"
     },
     {
       "idiom" : "universal",
+      "filename" : "ic_star_border@2x.png",
       "scale" : "2x"
     },
     {

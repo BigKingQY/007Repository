@@ -43,8 +43,8 @@
 - (void)changeButtonState:(NSNotification *)noti{
     TVChannelList *channel = noti.userInfo[@"channel"];
     channel.isSelected = NO;
-    NSIndexPath *indexPath = [NSIndexPath indexPathForRow:channel.tag inSection:0];
-    [self.tableView reloadRowsAtIndexPaths:@[indexPath] withRowAnimation:UITableViewRowAnimationFade];
+    
+    [self.tableView reloadData];
 }
 
 #pragma mark - Table view data source
@@ -67,6 +67,7 @@
     
     cell.titleLabel.text = channel.channelName;
     cell.iconImageView.image = [UIImage imageNamed:channel.imageName];
+    cell.imageView.tag = [[NSString stringWithFormat:@"%ld*10+%ld", indexPath.section,indexPath.row] integerValue];
     cell.collectBtn.tag = indexPath.row;
     cell.collectBtn.selected = channel.isSelected;
     [cell.collectBtn addTarget:self action:@selector(addToCollect:) forControlEvents:UIControlEventTouchUpInside];

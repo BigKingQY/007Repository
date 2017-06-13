@@ -20,31 +20,32 @@
                 <autoresizingMask key="autoresizingMask"/>
                 <subviews>
                     <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="o4B-q5-nNK">
-                        <rect key="frame" x="20" y="0.0" width="64" height="63.5"/>
+                        <rect key="frame" x="20" y="0.0" width="64" height="64"/>
                         <constraints>
                             <constraint firstAttribute="width" constant="64" id="wFs-Kp-k7u"/>
                         </constraints>
                     </imageView>
                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="iTb-N0-QVf">
-                        <rect key="frame" x="114" y="10" width="103.5" height="44"/>
+                        <rect key="frame" x="104" y="10" width="114" height="43"/>
+                        <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                         <fontDescription key="fontDescription" name="AppleSDGothicNeo-Regular" family="Apple SD Gothic Neo" pointSize="20"/>
                         <nil key="textColor"/>
                         <nil key="highlightedColor"/>
                     </label>
                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="quc-Nw-qII">
-                        <rect key="frame" x="217.5" y="2" width="59.5" height="59.5"/>
+                        <rect key="frame" x="218" y="2" width="59" height="60"/>
                         <constraints>
                             <constraint firstAttribute="width" constant="59.5" id="Rga-oC-s5M"/>
                         </constraints>
-                        <state key="normal" image="ic_favorite"/>
-                        <state key="selected" image="ic_favorite_selected"/>
+                        <state key="normal" image="ic_star_border"/>
+                        <state key="selected" image="ic_star"/>
                         <connections>
                             <action selector="clickBtn:" destination="KGk-i7-Jjw" eventType="touchUpInside" id="azL-pI-FaZ"/>
                         </connections>
                     </button>
                 </subviews>
                 <constraints>
-                    <constraint firstItem="quc-Nw-qII" firstAttribute="leading" secondItem="iTb-N0-QVf" secondAttribute="trailing" id="8bg-K9-sSw"/>
+                    <constraint firstItem="quc-Nw-qII" firstAttribute="leading" secondItem="iTb-N0-QVf" secondAttribute="trailing" id="6T0-fv-Njj"/>
                     <constraint firstAttribute="bottomMargin" secondItem="iTb-N0-QVf" secondAttribute="bottom" constant="2" id="Nvx-Up-rNG"/>
                     <constraint firstItem="o4B-q5-nNK" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" id="Tzc-D3-ARR"/>
                     <constraint firstItem="iTb-N0-QVf" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="topMargin" constant="2" id="hP9-b5-S5I"/>
@@ -53,11 +54,11 @@
                     <constraint firstAttribute="bottom" secondItem="quc-Nw-qII" secondAttribute="bottom" constant="2" id="vqL-sV-0sH"/>
                     <constraint firstAttribute="bottom" secondItem="o4B-q5-nNK" secondAttribute="bottom" id="x11-UM-RXd"/>
                     <constraint firstItem="quc-Nw-qII" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" constant="2" id="yLd-dk-y5C"/>
-                    <constraint firstItem="iTb-N0-QVf" firstAttribute="leading" secondItem="o4B-q5-nNK" secondAttribute="trailing" constant="30" id="zVP-2V-CmV"/>
+                    <constraint firstItem="iTb-N0-QVf" firstAttribute="leading" secondItem="o4B-q5-nNK" secondAttribute="trailing" constant="20" id="zVP-2V-CmV"/>
                 </constraints>
             </tableViewCellContentView>
             <connections>
-                <outlet property="collectBtn" destination="quc-Nw-qII" id="3LG-j2-WDC"/>
+                <outlet property="collectBtn" destination="quc-Nw-qII" id="Wix-TC-Mp2"/>
                 <outlet property="iconImageView" destination="o4B-q5-nNK" id="oLF-nl-guq"/>
                 <outlet property="titleLabel" destination="iTb-N0-QVf" id="FTL-Hc-Bny"/>
             </connections>
@@ -65,7 +66,7 @@
         </tableViewCell>
     </objects>
     <resources>
-        <image name="ic_favorite" width="36" height="36"/>
-        <image name="ic_favorite_selected" width="36" height="36"/>
+        <image name="ic_star" width="36" height="36"/>
+        <image name="ic_star_border" width="36" height="36"/>
     </resources>
 </document>

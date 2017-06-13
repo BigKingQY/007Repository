@@ -57,8 +57,8 @@
     [super viewWillAppear:animated];
     if (self.collectData.count == 0) {
         _backView = [[UIView alloc] initWithFrame:self.tableView.frame];
-        UILabel *label = [[UILabel alloc] initWithFrame:CGRectMake(40, 100, 300, 48)];
-        label.text = @"暂无收藏频道，点击❤️可收藏频道哦";
+        UILabel *label = [[UILabel alloc] initWithFrame:CGRectMake(40, 200, 300, 48)];
+        label.text = @"暂无收藏频道，点击☆可收藏频道哦";
         label.textColor = [UIColor darkGrayColor];
         _backView.backgroundColor = [UIColor whiteColor];
         [_backView addSubview:label];
@@ -68,6 +68,7 @@
     if (self.collectData.count > 0) {
         if ([self.view.subviews containsObject:_backView]) {
             [_backView removeFromSuperview];
+            _backView = nil;
         }
     }
     [self.tableView reloadData];
@@ -105,19 +106,23 @@
 - (void)removeCollect:(UIButton *)sender{
     TVChannelList *channel = self.collectData[sender.tag];
     
-    [[NSNotificationCenter defaultCenter] postNotificationName:@"ChangeButtonStateNotification" object:self userInfo:@{@"channel" : channel, @"Tag" : [NSNumber numberWithInteger:channel.tag]}];
-    
+    [[NSNotificationCenter defaultCenter] postNotificationName:@"ChangeButtonStateNotification" object:self userInfo:@{@"channel" : channel}];
     [self.collectData removeObject:channel];
-    NSIndexPath *indexPath = [NSIndexPath indexPathForRow:sender.tag inSection:0];
-    [self.tableView deleteRowsAtIndexPaths:@[indexPath] withRowAnimation:UITableViewRowAnimationFade];
+    [self.tableView reloadData];
     if (self.collectData.count == 0) {
         _backView = [[UIView alloc] initWithFrame:self.tableView.frame];
-        UILabel *label = [[UILabel alloc] initWithFrame:CGRectMake(40, 100, 300, 48)];
-        label.text = @"暂无收藏频道，点击❤️可收藏频道哦";
+        UILabel *label = [[UILabel alloc] initWithFrame:CGRectMake(40, 200, 300, 48)];
+        label.text = @"暂无收藏频道，点击☆可收藏频道哦";
         label.textColor = [UIColor darkGrayColor];
         [_backView addSubview:label];
         [self.view addSubview:_backView];
         [self.view layoutIfNeeded];
+    }
+    if (self.collectData.count > 0) {
+        if ([self.view.subviews containsObject:_backView]) {
+            [_backView removeFromSuperview];
+            _backView = nil;
+        }
     }
 }
 

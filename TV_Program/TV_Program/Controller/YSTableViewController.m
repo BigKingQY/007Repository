@@ -22,13 +22,12 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    
+    //去掉空白的cell
+    self.tableView.tableFooterView = [UIView new];
     
     MBProgressHUD *hud = [MBProgressHUD showHUDAddedTo:self.navigationController.view animated:YES];
     hud.label.text = NSLocalizedString(@"加载中...", nil);
     hud.backgroundView.style = MBProgressHUDBackgroundStyleSolidColor;
-    self.tableView.tableFooterView = [UIView new];
-    
     [[TVDataManager sharedDataManager] requestWithTVChannelListWithpId:@"1" success:^(id responseObj) {
         self.tvData = [[TVChannelList sharedData] channelListWithJson:responseObj];
         [self.tableView reloadData];
@@ -46,12 +45,9 @@
 
 - (void)changeButtonState:(NSNotification *)noti{
     TVChannelList *channel = noti.userInfo[@"channel"];
-    if (channel.isSelected == YES) {
-       channel.isSelected = NO;
-    }
+    channel.isSelected = NO;
     
-    NSIndexPath *indexPath = [NSIndexPath indexPathForRow:channel.tag inSection:0];
-    [self.tableView reloadRowsAtIndexPaths:@[indexPath] withRowAnimation:UITableViewRowAnimationFade];
+    [self.tableView reloadData];
 }
 
 #pragma mark - Table view data source
@@ -68,9 +64,7 @@
 
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
-    
     CustomTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"Cell" forIndexPath:indexPath];
-    
     TVChannelList *channel = self.tvData[indexPath.row];
     channel.imageName = @"cctv";
     

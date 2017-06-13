@@ -45,8 +45,7 @@
 - (void)changeButtonState:(NSNotification *)noti{
     TVChannelList *channel = noti.userInfo[@"channel"];
     channel.isSelected = NO;
-    NSIndexPath *indexPath = [NSIndexPath indexPathForRow:channel.tag inSection:0];
-    [self.tableView reloadRowsAtIndexPaths:@[indexPath] withRowAnimation:UITableViewRowAnimationFade];
+    [self.tableView reloadData];
 }
 
 
@@ -65,6 +64,7 @@
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
     CustomTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"Cell" forIndexPath:indexPath];
+    
     TVChannelList *channel = self.tvData[indexPath.row];
     channel.imageName = channel.rel;
     

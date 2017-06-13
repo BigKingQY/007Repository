@@ -50,8 +50,8 @@
 - (void)changeButtonState:(NSNotification *)noti{
     TVChannelList *channel = noti.userInfo[@"channel"];
     channel.isSelected = NO;
-    NSIndexPath *indexPath = [NSIndexPath indexPathForRow:channel.tag inSection:0];
-    [self.tableView reloadRowsAtIndexPaths:@[indexPath] withRowAnimation:UITableViewRowAnimationFade];
+    
+    [self.tableView reloadData];
 }
 
 #pragma mark - Table view data source
