@@ -10,4 +10,10 @@
 
 @interface CustomTableHeaderView : UIView
 
+@property (weak, nonatomic) IBOutlet UIButton *yestodayBtn;
+@property (weak, nonatomic) IBOutlet UIButton *tomorrowBtn;
+@property (weak, nonatomic) IBOutlet UIButton *datePickBtn;
+
+- (NSString *)setDate:(NSDate *)date;
+
 @end

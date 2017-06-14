@@ -18,38 +18,95 @@
 @property (nonatomic, strong) NSArray *programDatas;
 @property (nonatomic, strong) UILabel *label;
 
+@property (nonatomic, strong) CustomTableHeaderView *headerView;
+@property (nonatomic, strong) NSDate *currentDate;
+
+
 @end
 
 @implementation SubTableViewController
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    CustomTableHeaderView *headerView = [[[NSBundle mainBundle] loadNibNamed:@"CustomTableHeaderView" owner:nil options:nil] firstObject];
-    self.tableView.tableHeaderView = headerView;
+    
+    [self loadHeaderView];
+    [self startRequestTVDataWithDate:nil];
+    
+    
+}
+
+- (void)loadHeaderView{
+    self.headerView = [[[NSBundle mainBundle] loadNibNamed:@"CustomTableHeaderView" owner:nil options:nil] firstObject];
+    [self.headerView.yestodayBtn addTarget:self action:@selector(clickYestodayBtn) forControlEvents:UIControlEventTouchUpInside];
+    [self.headerView.tomorrowBtn addTarget:self action:@selector(clickTomorrowBtn) forControlEvents:UIControlEventTouchUpInside];
+    [self.headerView.datePickBtn addTarget:self action:@selector(clickDatePickerBtn) forControlEvents:UIControlEventTouchUpInside];
+    
+    self.currentDate = [NSDate date];
+    NSDateFormatter *formatter = [[NSDateFormatter alloc] init];
+    formatter.dateFormat = @"yyyy-MM-dd";
+    
+    self.tableView.tableHeaderView = self.headerView;
     self.tableView.tableFooterView = [UIView new];
-    
-    
+}
+
+- (void)startRequestTVDataWithDate:(NSString *)date{
     MBProgressHUD *hud = [MBProgressHUD showHUDAddedTo:self.navigationController.view animated:YES];
     hud.label.text = NSLocalizedString(@"加载中...", nil);
     hud.backgroundView.style = MBProgressHUDBackgroundStyleSolidColor;
-    [[TVDataManager sharedDataManager] requestWithTVProgramWithCode:self.channel.rel date:nil success:^(id responseObj) {
+
+    [[TVDataManager sharedDataManager] requestWithTVProgramWithCode:self.channel.rel date:date success:^(id responseObj) {
         self.programDatas = [[TVProgramList sharedData] programListWithJson:responseObj];
-        if (self.programDatas.count != 0) {
-            [hud hideAnimated:YES];
-            [self.tableView reloadData];
-        }else{
-            [hud hideAnimated:YES];
-            self.label = [[UILabel alloc] initWithFrame:CGRectMake(50, 200, 275, 50)];
-            self.label.textAlignment = NSTextAlignmentCenter;
-            self.label.text = @"当前频道暂时没有节目单!";
-            [self.view addSubview:self.label];
-        }
+        [hud hideAnimated:YES];
+        [self reloadView];
         
     } failure:^(NSError *error) {
         [hud hideAnimated:YES];
         NSLog(@"失败");
     }];
 }
+
+- (void)reloadView{
+    if (self.programDatas.count != 0) {
+        
+        if ([self.view.subviews containsObject:self.label]) {
+            [self.label removeFromSuperview];
+        }
+        [self.tableView reloadData];
+    }else{
+        if (![self.view.subviews containsObject:self.label]) {
+            [self.view addSubview:self.label];
+        }
+        [self.tableView reloadData];
+    }
+}
+
+-(UILabel *)label{
+    if (!_label) {
+        _label = [[UILabel alloc] initWithFrame:CGRectMake(50, 200, 275, 50)];
+        self.label.textAlignment = NSTextAlignmentCenter;
+        self.label.text = @"当前暂时没有节目单!";
+    }
+    return _label;
+}
+
+- (void)clickYestodayBtn{
+    self.currentDate = [NSDate dateWithTimeInterval:-24 * 3600 sinceDate:self.currentDate];
+    NSString *btnTitle = [self.headerView setDate:self.currentDate];
+    [self.headerView.datePickBtn setTitle:btnTitle forState:UIControlStateNormal];
+    [self startRequestTVDataWithDate:[[btnTitle componentsSeparatedByString:@"("] firstObject]];
+}
+
+- (void)clickTomorrowBtn{
+    self.currentDate = [NSDate dateWithTimeInterval:24 * 3600 sinceDate:self.currentDate];
+    NSString *btnTitle = [self.headerView setDate:self.currentDate];
+    [self.headerView.datePickBtn setTitle:btnTitle forState:UIControlStateNormal];
+    [self startRequestTVDataWithDate:[[btnTitle componentsSeparatedByString:@"("] firstObject]];
+}
+
+- (void)clickDatePickerBtn{
+    
+}
+
 
 
 

@@ -23,6 +23,11 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
+    
+    [self loadViewAndRequest];
+}
+
+- (void)loadViewAndRequest{
     //去掉多余的空白cell
     self.tableView.tableFooterView = [UIView new];
     
@@ -47,6 +52,7 @@
     
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(changeButtonState:) name:@"ChangeButtonStateNotification" object:nil];
 }
+
 
 - (void)changeButtonState:(NSNotification *)noti{
     TVChannelList *channel = noti.userInfo[@"channel"];

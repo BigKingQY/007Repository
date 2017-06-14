@@ -10,6 +10,7 @@
 #import "TVDataManager.h"
 #import "TVChannelList.h"
 #import "CustomTableViewCell.h"
+#import "SubTableViewController.h"
 
 @interface CollectTableViewController ()
 
@@ -125,6 +126,15 @@
         }
     }
 }
+
+- (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath{
+    TVChannelList *channel = self.collectData[indexPath.row];
+    SubTableViewController *vc = [[SubTableViewController alloc] initWithNibName:@"SubTableViewController" bundle:nil];
+    vc.title = [NSString stringWithFormat:@"%@节目单", channel.channelName];
+    vc.channel = channel;
+    [self.navigationController pushViewController:vc animated:YES];
+}
+
 
 -(CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath{
     return 64;

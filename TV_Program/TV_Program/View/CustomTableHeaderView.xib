@@ -23,16 +23,10 @@
                     </constraints>
                     <fontDescription key="fontDescription" type="system" pointSize="13"/>
                     <state key="normal" title="前一天"/>
-                    <connections>
-                        <action selector="clickYestodayBtn:" destination="iN0-l3-epB" eventType="touchUpInside" id="N7F-fa-hr6"/>
-                    </connections>
                 </button>
                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="HxS-AN-I90">
                     <rect key="frame" x="75" y="8" width="225" height="44"/>
-                    <state key="normal" title="2017-06-14（周三）"/>
-                    <connections>
-                        <action selector="clickDatePickerBtn:" destination="iN0-l3-epB" eventType="touchUpInside" id="lp9-F1-QZZ"/>
-                    </connections>
+                    <fontDescription key="fontDescription" type="system" pointSize="18"/>
                 </button>
                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="CFI-M9-vNR">
                     <rect key="frame" x="300" y="15" width="60" height="30"/>
@@ -42,9 +36,6 @@
                     </constraints>
                     <fontDescription key="fontDescription" type="system" pointSize="13"/>
                     <state key="normal" title="后一天"/>
-                    <connections>
-                        <action selector="clickTomorrowBtn:" destination="iN0-l3-epB" eventType="touchUpInside" id="he0-yB-YMC"/>
-                    </connections>
                 </button>
             </subviews>
             <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>

@@ -23,9 +23,13 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    //去掉多余的空白cell
-    self.tableView.tableFooterView = [UIView new];
     
+    [self loadViewAndRequest];
+}
+
+- (void)loadViewAndRequest{
+    //去掉空白的cell
+    self.tableView.tableFooterView = [UIView new];
     MBProgressHUD *hud = [MBProgressHUD showHUDAddedTo:self.navigationController.view animated:YES];
     hud.label.text = NSLocalizedString(@"加载中...", nil);
     hud.backgroundView.style = MBProgressHUDBackgroundStyleSolidColor;
@@ -34,7 +38,7 @@
         [self.tableView reloadData];
         [hud hideAnimated:YES];
     } failure:^(NSError *error) {
-        
+        [hud hideAnimated:YES];
     }];
     [self.tableView registerNib:[UINib nibWithNibName:@"CustomTableViewCell" bundle:nil] forCellReuseIdentifier:@"Cell"];
     

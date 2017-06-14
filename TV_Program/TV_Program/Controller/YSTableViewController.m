@@ -23,9 +23,13 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
+    
+    [self loadViewAndRequest];
+}
+
+- (void)loadViewAndRequest{
     //去掉空白的cell
     self.tableView.tableFooterView = [UIView new];
-    
     MBProgressHUD *hud = [MBProgressHUD showHUDAddedTo:self.navigationController.view animated:YES];
     hud.label.text = NSLocalizedString(@"加载中...", nil);
     hud.backgroundView.style = MBProgressHUDBackgroundStyleSolidColor;
@@ -36,11 +40,9 @@
     } failure:^(NSError *error) {
         [hud hideAnimated:YES];
     }];
-    
     [self.tableView registerNib:[UINib nibWithNibName:@"CustomTableViewCell" bundle:nil] forCellReuseIdentifier:@"Cell"];
     
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(changeButtonState:) name:@"ChangeButtonStateNotification" object:nil];
-    
 }
 
 - (void)changeButtonState:(NSNotification *)noti{
