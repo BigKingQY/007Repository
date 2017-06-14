@@ -11,6 +11,12 @@
 		0613C58F1EE8FB060044C296 /* CustomTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 0613C58D1EE8FB060044C296 /* CustomTableViewCell.xib */; };
 		061A42C51EEA4FA9001F93A0 /* WelComeViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 061A42C31EEA4FA9001F93A0 /* WelComeViewController.m */; };
 		061A42C61EEA4FA9001F93A0 /* WelComeViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 061A42C41EEA4FA9001F93A0 /* WelComeViewController.xib */; };
+		061D0F5A1EF1166D00D82C20 /* TVProgramTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 061D0F581EF1166D00D82C20 /* TVProgramTableViewCell.m */; };
+		061D0F5B1EF1166D00D82C20 /* TVProgramTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 061D0F591EF1166D00D82C20 /* TVProgramTableViewCell.xib */; };
+		062BD6F01EF0DC3500D1DD69 /* SubTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 062BD6EE1EF0DC3500D1DD69 /* SubTableViewController.m */; };
+		062BD6F11EF0DC3500D1DD69 /* SubTableViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 062BD6EF1EF0DC3500D1DD69 /* SubTableViewController.xib */; };
+		062BD6F41EF0DC9A00D1DD69 /* CustomTableHeaderView.m in Sources */ = {isa = PBXBuildFile; fileRef = 062BD6F31EF0DC9A00D1DD69 /* CustomTableHeaderView.m */; };
+		062BD6F61EF0DCC000D1DD69 /* CustomTableHeaderView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 062BD6F51EF0DCC000D1DD69 /* CustomTableHeaderView.xib */; };
 		062F6E0B1EE6817C00482B78 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 062F6E0A1EE6817C00482B78 /* main.m */; };
 		062F6E0E1EE6817C00482B78 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 062F6E0D1EE6817C00482B78 /* AppDelegate.m */; };
 		062F6E141EE6817C00482B78 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 062F6E121EE6817C00482B78 /* Main.storyboard */; };
@@ -64,6 +70,15 @@
 		061A42C21EEA4FA9001F93A0 /* WelComeViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WelComeViewController.h; sourceTree = "<group>"; };
 		061A42C31EEA4FA9001F93A0 /* WelComeViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WelComeViewController.m; sourceTree = "<group>"; };
 		061A42C41EEA4FA9001F93A0 /* WelComeViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = WelComeViewController.xib; sourceTree = "<group>"; };
+		061D0F571EF1166D00D82C20 /* TVProgramTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TVProgramTableViewCell.h; sourceTree = "<group>"; };
+		061D0F581EF1166D00D82C20 /* TVProgramTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TVProgramTableViewCell.m; sourceTree = "<group>"; };
+		061D0F591EF1166D00D82C20 /* TVProgramTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = TVProgramTableViewCell.xib; sourceTree = "<group>"; };
+		062BD6ED1EF0DC3500D1DD69 /* SubTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SubTableViewController.h; sourceTree = "<group>"; };
+		062BD6EE1EF0DC3500D1DD69 /* SubTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SubTableViewController.m; sourceTree = "<group>"; };
+		062BD6EF1EF0DC3500D1DD69 /* SubTableViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = SubTableViewController.xib; sourceTree = "<group>"; };
+		062BD6F21EF0DC9A00D1DD69 /* CustomTableHeaderView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CustomTableHeaderView.h; sourceTree = "<group>"; };
+		062BD6F31EF0DC9A00D1DD69 /* CustomTableHeaderView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CustomTableHeaderView.m; sourceTree = "<group>"; };
+		062BD6F51EF0DCC000D1DD69 /* CustomTableHeaderView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = CustomTableHeaderView.xib; sourceTree = "<group>"; };
 		062F6E061EE6817C00482B78 /* TV_Program.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = TV_Program.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		062F6E0A1EE6817C00482B78 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		062F6E0C1EE6817C00482B78 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
@@ -232,6 +247,9 @@
 				061A42C21EEA4FA9001F93A0 /* WelComeViewController.h */,
 				061A42C31EEA4FA9001F93A0 /* WelComeViewController.m */,
 				061A42C41EEA4FA9001F93A0 /* WelComeViewController.xib */,
+				062BD6ED1EF0DC3500D1DD69 /* SubTableViewController.h */,
+				062BD6EE1EF0DC3500D1DD69 /* SubTableViewController.m */,
+				062BD6EF1EF0DC3500D1DD69 /* SubTableViewController.xib */,
 			);
 			path = Controller;
 			sourceTree = "<group>";
@@ -255,6 +273,12 @@
 				0613C58B1EE8FB060044C296 /* CustomTableViewCell.h */,
 				0613C58C1EE8FB060044C296 /* CustomTableViewCell.m */,
 				0613C58D1EE8FB060044C296 /* CustomTableViewCell.xib */,
+				062BD6F21EF0DC9A00D1DD69 /* CustomTableHeaderView.h */,
+				062BD6F31EF0DC9A00D1DD69 /* CustomTableHeaderView.m */,
+				062BD6F51EF0DCC000D1DD69 /* CustomTableHeaderView.xib */,
+				061D0F571EF1166D00D82C20 /* TVProgramTableViewCell.h */,
+				061D0F581EF1166D00D82C20 /* TVProgramTableViewCell.m */,
+				061D0F591EF1166D00D82C20 /* TVProgramTableViewCell.xib */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -406,6 +430,8 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				061D0F5B1EF1166D00D82C20 /* TVProgramTableViewCell.xib in Resources */,
+				062BD6F11EF0DC3500D1DD69 /* SubTableViewController.xib in Resources */,
 				062F6E191EE6817C00482B78 /* LaunchScreen.storyboard in Resources */,
 				064747871EE7D09A0007C1E9 /* SZTableViewController.xib in Resources */,
 				0647479A1EE7D76E0007C1E9 /* BB645D0094469E9AEF3DC1A7DD179B69.png in Resources */,
@@ -414,6 +440,7 @@
 				0647477F1EE7D0680007C1E9 /* YSTableViewController.xib in Resources */,
 				064747981EE7D11A0007C1E9 /* CollectTableViewController.xib in Resources */,
 				062F6E161EE6817C00482B78 /* Assets.xcassets in Resources */,
+				062BD6F61EF0DCC000D1DD69 /* CustomTableHeaderView.xib in Resources */,
 				062F6E141EE6817C00482B78 /* Main.storyboard in Resources */,
 				0613C58F1EE8FB060044C296 /* CustomTableViewCell.xib in Resources */,
 				0647478E1EE7D0E20007C1E9 /* WSTableViewController.xib in Resources */,
@@ -588,10 +615,13 @@
 				064747971EE7D11A0007C1E9 /* CollectTableViewController.m in Sources */,
 				0613C58E1EE8FB060044C296 /* CustomTableViewCell.m in Sources */,
 				062F6E4B1EE6859D00482B78 /* TVChannelList.m in Sources */,
+				062BD6F41EF0DC9A00D1DD69 /* CustomTableHeaderView.m in Sources */,
+				062BD6F01EF0DC3500D1DD69 /* SubTableViewController.m in Sources */,
 				0647478D1EE7D0E20007C1E9 /* WSTableViewController.m in Sources */,
 				062F6E481EE6850000482B78 /* TVCategory.m in Sources */,
 				062F6E0B1EE6817C00482B78 /* main.m in Sources */,
 				062F6E511EE686DC00482B78 /* TVDataManager.m in Sources */,
+				061D0F5A1EF1166D00D82C20 /* TVProgramTableViewCell.m in Sources */,
 				061A42C51EEA4FA9001F93A0 /* WelComeViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

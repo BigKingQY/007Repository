@@ -11,6 +11,7 @@
 #import "TVChannelList.h"
 #import "CustomTableViewCell.h"
 #import "MBProgressHUD/MBProgressHUD.h"
+#import "SubTableViewController.h"
 
 @interface YSTableViewController ()
 
@@ -34,7 +35,6 @@
         [hud hideAnimated:YES];
     } failure:^(NSError *error) {
         [hud hideAnimated:YES];
-        NSLog(@"请求失败了");
     }];
     
     [self.tableView registerNib:[UINib nibWithNibName:@"CustomTableViewCell" bundle:nil] forCellReuseIdentifier:@"Cell"];
@@ -87,7 +87,11 @@
 
 
 -(void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath{
-    UITableViewCell *cell = [tableView cellForRowAtIndexPath:indexPath];
+    TVChannelList *channel = self.tvData[indexPath.row];
+    SubTableViewController *vc = [[SubTableViewController alloc] initWithNibName:@"SubTableViewController" bundle:nil];
+    vc.title = [NSString stringWithFormat:@"%@节目单", channel.channelName];
+    vc.channel = channel;
+    [self.navigationController pushViewController:vc animated:YES];
 }
 
 -(CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath{

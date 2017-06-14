@@ -11,6 +11,7 @@
 #import "TVChannelList.h"
 #import "CustomTableViewCell.h"
 #import "MBProgressHUD/MBProgressHUD.h"
+#import "SubTableViewController.h"
 
 @interface OtherTableViewController ()
 
@@ -88,6 +89,14 @@
     channel.isSelected = sender.selected;
     NSDictionary *dic = @{@"channel":channel, @"Tag":[NSNumber numberWithInteger:sender.tag]};
     [[NSNotificationCenter defaultCenter] postNotificationName:@"TVChannelNotification" object:self userInfo:dic];
+}
+
+- (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath{
+    TVChannelList *channel = self.tvData[indexPath.row];
+    SubTableViewController *vc = [[SubTableViewController alloc] initWithNibName:@"SubTableViewController" bundle:nil];
+    vc.title = [NSString stringWithFormat:@"%@节目单", channel.channelName];
+    vc.channel = channel;
+    [self.navigationController pushViewController:vc animated:YES];
 }
 
 -(CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath{

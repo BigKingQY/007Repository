@@ -1,52 +1,57 @@
 //
-//  SZTableViewController.m
+//  SubTableViewController.m
 //  TV_Program
 //
-//  Created by BigKing on 2017/6/7.
+//  Created by BigKing on 2017/6/14.
 //  Copyright © 2017年 BigKing. All rights reserved.
 //
 
-#import "SZTableViewController.h"
-#import "TVDataManager.h"
-#import "TVChannelList.h"
-#import "CustomTableViewCell.h"
-#import "MBProgressHUD/MBProgressHUD.h"
 #import "SubTableViewController.h"
+#import "CustomTableHeaderView.h"
+#import "TVDataManager.h"
+#import "TVProgramList.h"
+#import "MBProgressHUD/MBProgressHUD.h"
+#import "TVProgramTableViewCell.h"
 
-@interface SZTableViewController ()
+@interface SubTableViewController ()
 
-@property (nonatomic, strong) NSArray *tvData;
+@property (nonatomic, strong) NSArray *programDatas;
+@property (nonatomic, strong) UILabel *label;
 
 @end
 
-@implementation SZTableViewController
+@implementation SubTableViewController
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    //去掉多余的空白cell
+    CustomTableHeaderView *headerView = [[[NSBundle mainBundle] loadNibNamed:@"CustomTableHeaderView" owner:nil options:nil] firstObject];
+    self.tableView.tableHeaderView = headerView;
     self.tableView.tableFooterView = [UIView new];
+    
     
     MBProgressHUD *hud = [MBProgressHUD showHUDAddedTo:self.navigationController.view animated:YES];
     hud.label.text = NSLocalizedString(@"加载中...", nil);
     hud.backgroundView.style = MBProgressHUDBackgroundStyleSolidColor;
-    [[TVDataManager sharedDataManager] requestWithTVChannelListWithpId:@"3" success:^(id responseObj) {
-        self.tvData = [[TVChannelList sharedData] channelListWithJson:responseObj];
-        [self.tableView reloadData];
-        [hud hideAnimated:YES];
-    } failure:^(NSError *error) {
+    [[TVDataManager sharedDataManager] requestWithTVProgramWithCode:self.channel.rel date:nil success:^(id responseObj) {
+        self.programDatas = [[TVProgramList sharedData] programListWithJson:responseObj];
+        if (self.programDatas.count != 0) {
+            [hud hideAnimated:YES];
+            [self.tableView reloadData];
+        }else{
+            [hud hideAnimated:YES];
+            self.label = [[UILabel alloc] initWithFrame:CGRectMake(50, 200, 275, 50)];
+            self.label.textAlignment = NSTextAlignmentCenter;
+            self.label.text = @"当前频道暂时没有节目单!";
+            [self.view addSubview:self.label];
+        }
         
+    } failure:^(NSError *error) {
+        [hud hideAnimated:YES];
+        NSLog(@"失败");
     }];
-    [self.tableView registerNib:[UINib nibWithNibName:@"CustomTableViewCell" bundle:nil] forCellReuseIdentifier:@"Cell"];
-    
-    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(changeButtonState:) name:@"ChangeButtonStateNotification" object:nil];
 }
 
-- (void)changeButtonState:(NSNotification *)noti{
-    TVChannelList *channel = noti.userInfo[@"channel"];
-    channel.isSelected = NO;
-    
-    [self.tableView reloadData];
-}
+
 
 #pragma mark - Table view data source
 
@@ -57,45 +62,23 @@
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
 
-    return self.tvData.count;
+    return self.programDatas.count;
 }
 
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
-    CustomTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"Cell" forIndexPath:indexPath];
-    TVChannelList *channel = self.tvData[indexPath.row];
-    channel.imageName = @"shuziweishi";
+    TVProgramTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"Cell"];
+    if (cell == nil) {
+        cell = [[[NSBundle mainBundle] loadNibNamed:@"TVProgramTableViewCell" owner:nil options:nil] firstObject];
+    }
     
-    cell.titleLabel.text = channel.channelName;
-    cell.iconImageView.image = [UIImage imageNamed:channel.imageName];
-    cell.imageView.tag = [[NSString stringWithFormat:@"%ld*10+%ld", indexPath.section,indexPath.row] integerValue];
-    cell.collectBtn.tag = indexPath.row;
-    cell.collectBtn.selected = channel.isSelected;
-    [cell.collectBtn addTarget:self action:@selector(addToCollect:) forControlEvents:UIControlEventTouchUpInside];
-
+    TVProgramList *program = self.programDatas[indexPath.row];
+    cell.dateLabel.text = [[program.time componentsSeparatedByString:@" "] lastObject];
+    cell.detailLabel.text = program.pName;
+    
     return cell;
 }
 
-- (void)addToCollect:(UIButton *)sender{
-    TVChannelList *channel = self.tvData[sender.tag];
-    sender.selected = !sender.selected;
-    channel.isSelected = sender.selected;
-    NSDictionary *dic = @{@"channel":channel, @"Tag":[NSNumber numberWithInteger:sender.tag]};
-    [[NSNotificationCenter defaultCenter] postNotificationName:@"TVChannelNotification" object:self userInfo:dic];
-}
-
-- (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath{
-    TVChannelList *channel = self.tvData[indexPath.row];
-    SubTableViewController *vc = [[SubTableViewController alloc] initWithNibName:@"SubTableViewController" bundle:nil];
-    vc.title = [NSString stringWithFormat:@"%@节目单", channel.channelName];
-    vc.channel = channel;
-    [self.navigationController pushViewController:vc animated:YES];
-}
-
--(CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath{
-    
-    return 64;
-}
 
 /*
 // Override to support conditional editing of the table view.

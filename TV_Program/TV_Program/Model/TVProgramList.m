@@ -24,17 +24,25 @@ static TVProgramList *_programList;
 
 
 -(NSArray *)programListWithJson:(id)responseObj{
+    
     NSDictionary *json = responseObj;
-    NSMutableArray *array = [NSMutableArray array];
-    NSArray *result = json[@"result"];
-    for (NSDictionary *dic in result) {
-        self.cName = dic[@"cName"];
-        self.pName = dic[@"pName"];
-        self.pUrl = dic[@"pUrl"];
-        self.time = dic[@"time"];
-        [array addObject:self];
+    //判断一个对象是否是<null>的方法
+    if (json[@"result"] != [NSNull null]) {
+        NSMutableArray *array = [NSMutableArray array];
+        NSArray *result = json[@"result"];
+        for (NSDictionary *dic in result) {
+            TVProgramList *program = [TVProgramList new];
+            program.cName = dic[@"cName"];
+            program.pName = dic[@"pName"];
+            program.pUrl = dic[@"pUrl"];
+            program.time = dic[@"time"];
+            [array addObject:program];
+        }
+        return [array copy];
     }
-    return [array copy];
+    
+    
+    return nil;
 }
 
 @end

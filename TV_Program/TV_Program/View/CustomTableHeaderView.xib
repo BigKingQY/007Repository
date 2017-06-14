@@ -1,0 +1,73 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="11762" systemVersion="16F73" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
+    <device id="retina4_7" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="11757"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <view contentMode="scaleToFill" id="iN0-l3-epB" customClass="CustomTableHeaderView">
+            <rect key="frame" x="0.0" y="0.0" width="375" height="60"/>
+            <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+            <subviews>
+                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="kJj-sS-aX3">
+                    <rect key="frame" x="15" y="15" width="60" height="30"/>
+                    <color key="backgroundColor" red="0.0" green="0.59999999999999998" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                    <constraints>
+                        <constraint firstAttribute="width" constant="60" id="QYe-pU-s3y"/>
+                    </constraints>
+                    <fontDescription key="fontDescription" type="system" pointSize="13"/>
+                    <state key="normal" title="前一天"/>
+                    <connections>
+                        <action selector="clickYestodayBtn:" destination="iN0-l3-epB" eventType="touchUpInside" id="N7F-fa-hr6"/>
+                    </connections>
+                </button>
+                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="HxS-AN-I90">
+                    <rect key="frame" x="75" y="8" width="225" height="44"/>
+                    <state key="normal" title="2017-06-14（周三）"/>
+                    <connections>
+                        <action selector="clickDatePickerBtn:" destination="iN0-l3-epB" eventType="touchUpInside" id="lp9-F1-QZZ"/>
+                    </connections>
+                </button>
+                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="CFI-M9-vNR">
+                    <rect key="frame" x="300" y="15" width="60" height="30"/>
+                    <color key="backgroundColor" red="0.0" green="0.59999999999999998" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                    <constraints>
+                        <constraint firstAttribute="width" constant="60" id="TmT-ka-OVK"/>
+                    </constraints>
+                    <fontDescription key="fontDescription" type="system" pointSize="13"/>
+                    <state key="normal" title="后一天"/>
+                    <connections>
+                        <action selector="clickTomorrowBtn:" destination="iN0-l3-epB" eventType="touchUpInside" id="he0-yB-YMC"/>
+                    </connections>
+                </button>
+            </subviews>
+            <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+            <constraints>
+                <constraint firstItem="kJj-sS-aX3" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" constant="15" id="117-uI-NPm"/>
+                <constraint firstAttribute="bottom" secondItem="CFI-M9-vNR" secondAttribute="bottom" constant="15" id="9LD-Ja-rdx"/>
+                <constraint firstItem="HxS-AN-I90" firstAttribute="top" secondItem="iN0-l3-epB" secondAttribute="top" constant="8" id="C5f-PM-ndW"/>
+                <constraint firstAttribute="trailing" secondItem="CFI-M9-vNR" secondAttribute="trailing" constant="15" id="Fhg-oN-Wh8"/>
+                <constraint firstAttribute="bottom" secondItem="kJj-sS-aX3" secondAttribute="bottom" constant="15" id="GFV-xj-Nvk"/>
+                <constraint firstItem="kJj-sS-aX3" firstAttribute="top" secondItem="iN0-l3-epB" secondAttribute="top" constant="15" id="VSh-k3-atl"/>
+                <constraint firstItem="CFI-M9-vNR" firstAttribute="top" secondItem="iN0-l3-epB" secondAttribute="top" constant="15" id="adi-3d-ufb"/>
+                <constraint firstItem="CFI-M9-vNR" firstAttribute="leading" secondItem="HxS-AN-I90" secondAttribute="trailing" id="eTR-m6-MED"/>
+                <constraint firstItem="HxS-AN-I90" firstAttribute="leading" secondItem="kJj-sS-aX3" secondAttribute="trailing" id="gEf-vO-ixK"/>
+                <constraint firstAttribute="bottom" secondItem="HxS-AN-I90" secondAttribute="bottom" constant="8" id="m8y-vp-b5R"/>
+            </constraints>
+            <nil key="simulatedStatusBarMetrics"/>
+            <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
+            <connections>
+                <outlet property="datePickBtn" destination="HxS-AN-I90" id="Yvp-SX-vZn"/>
+                <outlet property="tomorrowBtn" destination="CFI-M9-vNR" id="ZqJ-5z-VHm"/>
+                <outlet property="yestodayBtn" destination="kJj-sS-aX3" id="5VQ-tZ-h5z"/>
+            </connections>
+            <point key="canvasLocation" x="33.5" y="54"/>
+        </view>
+    </objects>
+</document>
