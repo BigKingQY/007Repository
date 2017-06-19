@@ -40,6 +40,8 @@
 		064747971EE7D11A0007C1E9 /* CollectTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 064747951EE7D11A0007C1E9 /* CollectTableViewController.m */; };
 		064747981EE7D11A0007C1E9 /* CollectTableViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 064747961EE7D11A0007C1E9 /* CollectTableViewController.xib */; };
 		0647479A1EE7D76E0007C1E9 /* BB645D0094469E9AEF3DC1A7DD179B69.png in Resources */ = {isa = PBXBuildFile; fileRef = 064747991EE7D76E0007C1E9 /* BB645D0094469E9AEF3DC1A7DD179B69.png */; };
+		0649338A1EF7611300DEB56D /* FirstLineTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 064933881EF7611300DEB56D /* FirstLineTableViewCell.m */; };
+		0649338B1EF7611300DEB56D /* FirstLineTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 064933891EF7611300DEB56D /* FirstLineTableViewCell.xib */; };
 		13E5479F595315DDDD88D2ED /* libPods-TV_Program.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 314E5AEF4D8A2C2DDEE2835A /* libPods-TV_Program.a */; };
 		5491866226EAA9EB9BC5C007 /* libPods-TV_ProgramTests.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 56C5249D49A0B3F86BC091BE /* libPods-TV_ProgramTests.a */; };
 		A4FD69C57986C5EE0DEFBA6E /* libPods-TV_ProgramUITests.a in Frameworks */ = {isa = PBXBuildFile; fileRef = A7073AA004E8D6A362A45911 /* libPods-TV_ProgramUITests.a */; };
@@ -119,6 +121,9 @@
 		064747951EE7D11A0007C1E9 /* CollectTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CollectTableViewController.m; sourceTree = "<group>"; };
 		064747961EE7D11A0007C1E9 /* CollectTableViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = CollectTableViewController.xib; sourceTree = "<group>"; };
 		064747991EE7D76E0007C1E9 /* BB645D0094469E9AEF3DC1A7DD179B69.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = BB645D0094469E9AEF3DC1A7DD179B69.png; sourceTree = "<group>"; };
+		064933871EF7611300DEB56D /* FirstLineTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FirstLineTableViewCell.h; sourceTree = "<group>"; };
+		064933881EF7611300DEB56D /* FirstLineTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FirstLineTableViewCell.m; sourceTree = "<group>"; };
+		064933891EF7611300DEB56D /* FirstLineTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = FirstLineTableViewCell.xib; sourceTree = "<group>"; };
 		2229030E5ED6743137F284F3 /* Pods-TV_ProgramTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-TV_ProgramTests.release.xcconfig"; path = "Pods/Target Support Files/Pods-TV_ProgramTests/Pods-TV_ProgramTests.release.xcconfig"; sourceTree = "<group>"; };
 		2A593255544EC58A3537CEEA /* Pods-TV_ProgramTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-TV_ProgramTests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-TV_ProgramTests/Pods-TV_ProgramTests.debug.xcconfig"; sourceTree = "<group>"; };
 		314E5AEF4D8A2C2DDEE2835A /* libPods-TV_Program.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-TV_Program.a"; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -279,6 +284,9 @@
 				061D0F571EF1166D00D82C20 /* TVProgramTableViewCell.h */,
 				061D0F581EF1166D00D82C20 /* TVProgramTableViewCell.m */,
 				061D0F591EF1166D00D82C20 /* TVProgramTableViewCell.xib */,
+				064933871EF7611300DEB56D /* FirstLineTableViewCell.h */,
+				064933881EF7611300DEB56D /* FirstLineTableViewCell.m */,
+				064933891EF7611300DEB56D /* FirstLineTableViewCell.xib */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -433,6 +441,7 @@
 				061D0F5B1EF1166D00D82C20 /* TVProgramTableViewCell.xib in Resources */,
 				062BD6F11EF0DC3500D1DD69 /* SubTableViewController.xib in Resources */,
 				062F6E191EE6817C00482B78 /* LaunchScreen.storyboard in Resources */,
+				0649338B1EF7611300DEB56D /* FirstLineTableViewCell.xib in Resources */,
 				064747871EE7D09A0007C1E9 /* SZTableViewController.xib in Resources */,
 				0647479A1EE7D76E0007C1E9 /* BB645D0094469E9AEF3DC1A7DD179B69.png in Resources */,
 				061A42C61EEA4FA9001F93A0 /* WelComeViewController.xib in Resources */,
@@ -610,6 +619,7 @@
 				0647477E1EE7D0680007C1E9 /* YSTableViewController.m in Sources */,
 				064747921EE7D0F30007C1E9 /* OtherTableViewController.m in Sources */,
 				064747861EE7D09A0007C1E9 /* SZTableViewController.m in Sources */,
+				0649338A1EF7611300DEB56D /* FirstLineTableViewCell.m in Sources */,
 				062F6E4E1EE6863B00482B78 /* TVProgramList.m in Sources */,
 				062F6E0E1EE6817C00482B78 /* AppDelegate.m in Sources */,
 				064747971EE7D11A0007C1E9 /* CollectTableViewController.m in Sources */,

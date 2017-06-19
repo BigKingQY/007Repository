@@ -12,10 +12,11 @@
 #import "TVProgramList.h"
 #import "MBProgressHUD/MBProgressHUD.h"
 #import "TVProgramTableViewCell.h"
+#import "FirstLineTableViewCell.h"
 
 @interface SubTableViewController ()
 
-@property (nonatomic, strong) NSArray *programDatas;
+@property (nonatomic, strong) NSMutableArray *programDatas;
 @property (nonatomic, strong) UILabel *label;
 
 @property (nonatomic, strong) CustomTableHeaderView *headerView;
@@ -35,6 +36,13 @@
     
 }
 
+- (NSMutableArray *)programDatas{
+    if (!_programDatas) {
+        _programDatas = [NSMutableArray array];
+    }
+    return _programDatas;
+}
+
 - (void)loadHeaderView{
     self.headerView = [[[NSBundle mainBundle] loadNibNamed:@"CustomTableHeaderView" owner:nil options:nil] firstObject];
     [self.headerView.yestodayBtn addTarget:self action:@selector(clickYestodayBtn) forControlEvents:UIControlEventTouchUpInside];
@@ -47,6 +55,7 @@
     
     self.tableView.tableHeaderView = self.headerView;
     self.tableView.tableFooterView = [UIView new];
+
 }
 
 - (void)startRequestTVDataWithDate:(NSString *)date{
@@ -55,14 +64,44 @@
     hud.backgroundView.style = MBProgressHUDBackgroundStyleSolidColor;
 
     [[TVDataManager sharedDataManager] requestWithTVProgramWithCode:self.channel.rel date:date success:^(id responseObj) {
-        self.programDatas = [[TVProgramList sharedData] programListWithJson:responseObj];
+        self.programDatas = [NSMutableArray arrayWithArray:[[TVProgramList sharedData] programListWithJson:responseObj]];
         [hud hideAnimated:YES];
+        [self moveCurrentProgramToFirst];
         [self reloadView];
         
     } failure:^(NSError *error) {
         [hud hideAnimated:YES];
         NSLog(@"失败");
     }];
+}
+
+- (void)moveCurrentProgramToFirst{
+    NSDate *currentDate = [NSDate date];
+    NSDateFormatter *formatter = [[NSDateFormatter alloc] init];
+    formatter.dateFormat = @"yyyy-MM-dd HH:mm";
+    NSString *currentTime = [formatter stringFromDate:currentDate];
+    //NSLog(@"%@", currentTime);
+    NSArray *ctime = [[[currentTime componentsSeparatedByString:@" "] lastObject] componentsSeparatedByString:@":"];
+    NSInteger cSeconds = [ctime[0] integerValue] * 60 + [ctime[1] integerValue];
+    
+    NSString *cDate = [[currentTime componentsSeparatedByString:@" "] firstObject];
+    
+    for (int i = 0; i < self.programDatas.count; i++) {
+        TVProgramList *program = self.programDatas[i];
+        NSString *time = [[program.time componentsSeparatedByString:@" "] lastObject];
+        NSString *pDate = [[program.time componentsSeparatedByString:@" "] firstObject];
+        NSArray *ptime = [time componentsSeparatedByString:@":"];
+        NSInteger pSeconds = [ptime[0] integerValue] * 60 + [ptime[1] integerValue];
+        if (![cDate isEqualToString:pDate]) {
+            break;
+        }
+        if (cSeconds < pSeconds && self.programDatas[i-1]) {
+            TVProgramList *preProgram = self.programDatas[i-1];
+            [self.programDatas removeObject:preProgram];
+            [self.programDatas insertObject:preProgram atIndex:0];
+            break;
+        }
+    }
 }
 
 - (void)reloadView{
@@ -124,17 +163,61 @@
 
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
-    TVProgramTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"Cell"];
-    if (cell == nil) {
-        cell = [[[NSBundle mainBundle] loadNibNamed:@"TVProgramTableViewCell" owner:nil options:nil] firstObject];
+    
+    //判断是否是第一行和是否是今天
+    if (indexPath.row == 0 && [self isToday:self.currentDate]) {
+        FirstLineTableViewCell *cell = [[[NSBundle mainBundle] loadNibNamed:@"FirstLineTableViewCell" owner:nil options:nil] firstObject];
+        TVProgramList *program = self.programDatas[indexPath.row];
+        cell.dateLabel.text = [[program.time componentsSeparatedByString:@" "] lastObject];
+        cell.detailLabel.text = program.pName;
+        [cell moveStart];
+        [cell.playButton addTarget:self action:@selector(clickPlay:) forControlEvents:UIControlEventTouchUpInside];
+        return cell;
+    }else{
+        TVProgramTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"Cell"];
+        if (cell == nil) {
+            cell = [[[NSBundle mainBundle] loadNibNamed:@"TVProgramTableViewCell" owner:nil options:nil] firstObject];
+        }
+        TVProgramList *program = self.programDatas[indexPath.row];
+        cell.dateLabel.text = [[program.time componentsSeparatedByString:@" "] lastObject];
+        cell.detailLabel.text = program.pName;
+        
+        return cell;
     }
-    
-    TVProgramList *program = self.programDatas[indexPath.row];
-    cell.dateLabel.text = [[program.time componentsSeparatedByString:@" "] lastObject];
-    cell.detailLabel.text = program.pName;
-    
-    return cell;
 }
+
+- (void)clickPlay:(UIButton *)sender{
+    NSLog(@"点击了播放按钮");
+}
+
+
+- (BOOL)isToday:(NSDate *)date{
+    NSDateFormatter *formatter = [[NSDateFormatter alloc] init];
+    formatter.dateFormat = @"yyyy-MM-dd";
+    NSDate *todayDate = [NSDate new];
+    NSString *today = [formatter stringFromDate:todayDate];
+    NSString *currentDay = [formatter stringFromDate:date];
+    
+    return [today isEqualToString:currentDay];
+}
+
+
+- (BOOL)tableView:(UITableView *)tableView canMoveRowAtIndexPath:(NSIndexPath *)indexPath{
+    return YES;
+}
+
+- (UITableViewCellEditingStyle)tableView:(UITableView *)tableView editingStyleForRowAtIndexPath:(NSIndexPath *)indexPath{
+    return UITableViewCellEditingStyleNone;
+}
+
+- (void)tableView:(UITableView *)tableView moveRowAtIndexPath:(NSIndexPath *)sourceIndexPath toIndexPath:(NSIndexPath *)destinationIndexPath{
+    
+}
+
+
+
+
+
 
 
 /*

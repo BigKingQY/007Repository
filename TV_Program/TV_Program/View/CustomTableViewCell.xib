@@ -16,26 +16,26 @@
             <rect key="frame" x="0.0" y="0.0" width="320" height="64"/>
             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
             <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="KGk-i7-Jjw" id="H2p-sc-9uM">
-                <rect key="frame" x="0.0" y="0.0" width="287" height="63.5"/>
+                <rect key="frame" x="0.0" y="0.0" width="287" height="63"/>
                 <autoresizingMask key="autoresizingMask"/>
                 <subviews>
                     <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="o4B-q5-nNK">
                         <rect key="frame" x="20" y="0.0" width="64" height="64"/>
                         <constraints>
-                            <constraint firstAttribute="width" constant="64" id="wFs-Kp-k7u"/>
+                            <constraint firstAttribute="width" constant="64" id="8lr-sp-XSv"/>
                         </constraints>
                     </imageView>
                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="iTb-N0-QVf">
-                        <rect key="frame" x="104" y="10" width="114" height="43"/>
+                        <rect key="frame" x="114" y="10" width="103" height="43"/>
                         <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                         <fontDescription key="fontDescription" name="AppleSDGothicNeo-Regular" family="Apple SD Gothic Neo" pointSize="20"/>
                         <nil key="textColor"/>
                         <nil key="highlightedColor"/>
                     </label>
                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="quc-Nw-qII">
-                        <rect key="frame" x="218" y="2" width="59" height="60"/>
+                        <rect key="frame" x="217" y="2" width="60" height="60"/>
                         <constraints>
-                            <constraint firstAttribute="width" constant="59.5" id="Rga-oC-s5M"/>
+                            <constraint firstAttribute="width" constant="60" id="3bN-xU-e8I"/>
                         </constraints>
                         <state key="normal" image="ic_star_border"/>
                         <state key="selected" image="ic_star"/>
@@ -54,7 +54,7 @@
                     <constraint firstAttribute="bottom" secondItem="quc-Nw-qII" secondAttribute="bottom" constant="2" id="vqL-sV-0sH"/>
                     <constraint firstAttribute="bottom" secondItem="o4B-q5-nNK" secondAttribute="bottom" id="x11-UM-RXd"/>
                     <constraint firstItem="quc-Nw-qII" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" constant="2" id="yLd-dk-y5C"/>
-                    <constraint firstItem="iTb-N0-QVf" firstAttribute="leading" secondItem="o4B-q5-nNK" secondAttribute="trailing" constant="20" id="zVP-2V-CmV"/>
+                    <constraint firstItem="iTb-N0-QVf" firstAttribute="leading" secondItem="o4B-q5-nNK" secondAttribute="trailing" constant="30" id="zVP-2V-CmV"/>
                 </constraints>
             </tableViewCellContentView>
             <connections>
