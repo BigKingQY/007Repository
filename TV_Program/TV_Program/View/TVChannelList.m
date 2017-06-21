@@ -34,6 +34,7 @@ static TVChannelList *_channelList;
         list.isSelected = NO;
         [array addObject:list];
     }
+
     return [array copy];
 }
 

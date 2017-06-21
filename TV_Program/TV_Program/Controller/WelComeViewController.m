@@ -15,23 +15,34 @@
 
 @interface WelComeViewController ()
 
+@property (weak, nonatomic) IBOutlet UIButton *backSkipBtn;
 @property (weak, nonatomic) IBOutlet UIButton *skipBtn;
 @property (strong, nonatomic) NSTimer *timer;
+@property (assign, nonatomic) NSInteger timeInterval;
 
 @end
+
+static NSInteger kTimeInterval = 5;
 
 @implementation WelComeViewController
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    self.skipBtn.layer.cornerRadius = 10;
-    self.timer = [NSTimer scheduledTimerWithTimeInterval:5 target:self selector:@selector(clickSkipBtn:) userInfo:nil repeats:NO];
- 
+    _timeInterval = kTimeInterval;
+    self.backSkipBtn.layer.cornerRadius = 10;
+    //self.skipBtn.layer.cornerRadius = 15;
+    [NSTimer scheduledTimerWithTimeInterval:kTimeInterval target:self selector:@selector(clickSkipBtn:) userInfo:nil repeats:NO];
+    self.timer = [NSTimer scheduledTimerWithTimeInterval:1 target:self selector:@selector(changeLabel:) userInfo:nil repeats:YES];
 }
 
+- (void)changeLabel:(NSTimer *)timer{
+    _timeInterval--;
+    [self.backSkipBtn setTitle:[NSString stringWithFormat:@"跳过 %lds", _timeInterval] forState:UIControlStateNormal];
+}
 
-- (IBAction)clickSkipBtn:(id)sender {
+- (IBAction)clickSkipBtn:(NSTimer *)timer {
     [self jumpToNextSenece];
+    
 }
 
 -(void)jumpToNextSenece{

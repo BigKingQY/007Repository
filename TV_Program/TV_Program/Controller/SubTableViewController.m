@@ -13,6 +13,15 @@
 #import "MBProgressHUD/MBProgressHUD.h"
 #import "TVProgramTableViewCell.h"
 #import "FirstLineTableViewCell.h"
+#import "TVPlayerViewController.h"
+
+#import "CLPlayerView.h"
+
+#import "TVPlayView.h"
+
+
+#define kScreenWidth [UIScreen mainScreen].bounds.size.width
+#define kScreenHeight [UIScreen mainScreen].bounds.size.height
 
 @interface SubTableViewController ()
 
@@ -187,7 +196,13 @@
 }
 
 - (void)clickPlay:(UIButton *)sender{
-    NSLog(@"点击了播放按钮");
+    TVPlayerViewController *playerVC = [[TVPlayerViewController alloc] init];
+    playerVC.view.frame = CGRectMake(0, 0, kScreenWidth, kScreenHeight);
+    NSString *path = [[NSBundle mainBundle] pathForResource:@"TVURL.plist" ofType:nil];
+    NSDictionary *dic = [NSDictionary dictionaryWithContentsOfFile:path];
+    playerVC.url = dic[self.channel.rel];
+    [self.tabBarController presentViewController:playerVC animated:YES completion:nil];
+    
 }
 
 

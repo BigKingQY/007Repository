@@ -12,10 +12,12 @@
 #import "CustomTableViewCell.h"
 #import "MBProgressHUD/MBProgressHUD.h"
 #import "SubTableViewController.h"
+#import "FailuerView.h"
 
 @interface OtherTableViewController ()
 
 @property (nonatomic, strong) NSMutableArray *tvData;
+@property (nonatomic, weak) FailuerView *failuerView;
 
 @end
 
@@ -28,6 +30,10 @@
 }
 
 - (void)loadViewAndRequest{
+    //移除加载失败的页面
+    if ([self.view.subviews containsObject:_failuerView]) {
+        [_failuerView removeFromSuperview];
+    }
     //去掉多余的空白cell
     self.tableView.tableFooterView = [UIView new];
     
@@ -45,7 +51,13 @@
             [self.tableView reloadData];
             [hud hideAnimated:YES];
         } failure:^(NSError *error) {
-            
+            [hud hideAnimated:YES];
+            if (![self.view.subviews containsObject:_failuerView]) {
+                FailuerView *failuerView = [[[NSBundle mainBundle] loadNibNamed:@"FailuerView" owner:nil options:nil] lastObject];
+                _failuerView = failuerView;
+                [_failuerView.reloadButton addTarget:self action:@selector(reloadDatas:) forControlEvents:UIControlEventTouchUpInside];
+                [self.view addSubview:_failuerView];
+            }
         }];
     }
     [self.tableView registerNib:[UINib nibWithNibName:@"CustomTableViewCell" bundle:nil] forCellReuseIdentifier:@"Cell"];
@@ -53,6 +65,9 @@
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(changeButtonState:) name:@"ChangeButtonStateNotification" object:nil];
 }
 
+- (void)reloadDatas:(UIButton *)sender{
+    [self loadViewAndRequest];
+}
 
 - (void)changeButtonState:(NSNotification *)noti{
     TVChannelList *channel = noti.userInfo[@"channel"];

@@ -28,27 +28,8 @@
     [self.tableView registerNib:[UINib nibWithNibName:@"CustomTableViewCell" bundle:nil] forCellReuseIdentifier:@"Cell"];
     self.tableView.tableFooterView = [UIView new];
     [self.tableView setEditing:NO animated:NO];
-    [self addRightBarButtonItem];
 }
 
-- (void)addRightBarButtonItem{
-    self.barButton = [[UIButton alloc] initWithFrame:CGRectMake(0, 0, 100, 40)];
-    [self.barButton setTitle:@"开启滑动" forState:UIControlStateNormal];
-    [self.barButton setTitle:@"关闭滑动" forState:UIControlStateSelected];
-    UIBarButtonItem *item = [[UIBarButtonItem alloc] initWithCustomView:self.barButton];
-    self.navigationItem.rightBarButtonItem = self.editButtonItem;
-    [self.barButton addTarget:self action:@selector(canEdit:) forControlEvents:UIControlEventTouchUpInside];
-}
-
-- (void)canEdit:(UIButton *)sender{
-    sender.selected = !sender.selected;
-    if (sender.selected == YES) {
-        [self.tableView setEditing:YES animated:YES];
-    }else{
-        [self.tableView setEditing:NO animated:YES];
-    }
-    
-}
 
 - (void)getCollectData:(NSNotification *)notification{
     TVChannelList *channel = notification.userInfo[@"channel"];
@@ -80,7 +61,6 @@
     if (self.collectData.count == 0) {
         self.barButton.alpha = 0.4;
         self.barButton.enabled = NO;
-        //[self.tableView setEditing:NO animated:YES];
         
         _backView = [[UIView alloc] initWithFrame:self.tableView.frame];
         UILabel *label = [[UILabel alloc] initWithFrame:CGRectMake(40, 200, 300, 48)];
@@ -170,21 +150,6 @@
     return 64;
 }
 
-- (UITableViewCellEditingStyle)tableView:(UITableView *)tableView editingStyleForRowAtIndexPath:(NSIndexPath *)indexPath{
-    return UITableViewCellEditingStyleNone;
-}
-
-- (BOOL)tableView:(UITableView *)tableView shouldIndentWhileEditingRowAtIndexPath:(NSIndexPath *)indexPath{
-    return YES;
-}
-
-- (BOOL)tableView:(UITableView *)tableView canMoveRowAtIndexPath:(NSIndexPath *)indexPath{
-    return YES;
-}
-
-- (void)tableView:(UITableView *)tableView moveRowAtIndexPath:(NSIndexPath *)sourceIndexPath toIndexPath:(NSIndexPath *)destinationIndexPath{
-    
-}
 
 /*
 // Override to support conditional editing of the table view.

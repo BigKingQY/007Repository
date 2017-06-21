@@ -7,12 +7,22 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		0605DDA01EFA5B2300810396 /* FailuerView.m in Sources */ = {isa = PBXBuildFile; fileRef = 0605DD9F1EFA5B2300810396 /* FailuerView.m */; };
+		0605DDA21EFA5B2F00810396 /* FailuerView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 0605DDA11EFA5B2F00810396 /* FailuerView.xib */; };
 		0613C58E1EE8FB060044C296 /* CustomTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 0613C58C1EE8FB060044C296 /* CustomTableViewCell.m */; };
 		0613C58F1EE8FB060044C296 /* CustomTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 0613C58D1EE8FB060044C296 /* CustomTableViewCell.xib */; };
 		061A42C51EEA4FA9001F93A0 /* WelComeViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 061A42C31EEA4FA9001F93A0 /* WelComeViewController.m */; };
 		061A42C61EEA4FA9001F93A0 /* WelComeViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 061A42C41EEA4FA9001F93A0 /* WelComeViewController.xib */; };
 		061D0F5A1EF1166D00D82C20 /* TVProgramTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 061D0F581EF1166D00D82C20 /* TVProgramTableViewCell.m */; };
 		061D0F5B1EF1166D00D82C20 /* TVProgramTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 061D0F591EF1166D00D82C20 /* TVProgramTableViewCell.xib */; };
+		061E05171EF7D8CD00A2E9D7 /* TVPlayView.m in Sources */ = {isa = PBXBuildFile; fileRef = 061E05161EF7D8CD00A2E9D7 /* TVPlayView.m */; };
+		061E05191EF7D90000A2E9D7 /* TVPlayView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 061E05181EF7D90000A2E9D7 /* TVPlayView.xib */; };
+		061E05221EF7DBC000A2E9D7 /* CLPlayer.bundle in Resources */ = {isa = PBXBuildFile; fileRef = 061E051B1EF7DBC000A2E9D7 /* CLPlayer.bundle */; };
+		061E05231EF7DBC000A2E9D7 /* CLPlayerMaskView.m in Sources */ = {isa = PBXBuildFile; fileRef = 061E051D1EF7DBC000A2E9D7 /* CLPlayerMaskView.m */; };
+		061E05241EF7DBC000A2E9D7 /* CLPlayerView.m in Sources */ = {isa = PBXBuildFile; fileRef = 061E051F1EF7DBC000A2E9D7 /* CLPlayerView.m */; };
+		061E05251EF7DBC000A2E9D7 /* CLSlider.m in Sources */ = {isa = PBXBuildFile; fileRef = 061E05211EF7DBC000A2E9D7 /* CLSlider.m */; };
+		062020C61EF8F1C000B9DEEC /* TVPlayerViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 062020C51EF8F1C000B9DEEC /* TVPlayerViewController.m */; };
+		062020C81EF9101700B9DEEC /* TVURL.plist in Resources */ = {isa = PBXBuildFile; fileRef = 062020C71EF9101700B9DEEC /* TVURL.plist */; };
 		062BD6F01EF0DC3500D1DD69 /* SubTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 062BD6EE1EF0DC3500D1DD69 /* SubTableViewController.m */; };
 		062BD6F11EF0DC3500D1DD69 /* SubTableViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 062BD6EF1EF0DC3500D1DD69 /* SubTableViewController.xib */; };
 		062BD6F41EF0DC9A00D1DD69 /* CustomTableHeaderView.m in Sources */ = {isa = PBXBuildFile; fileRef = 062BD6F31EF0DC9A00D1DD69 /* CustomTableHeaderView.m */; };
@@ -66,6 +76,9 @@
 
 /* Begin PBXFileReference section */
 		032D1465B76B5D4246680B04 /* Pods-TV_Program.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-TV_Program.debug.xcconfig"; path = "Pods/Target Support Files/Pods-TV_Program/Pods-TV_Program.debug.xcconfig"; sourceTree = "<group>"; };
+		0605DD9E1EFA5B2300810396 /* FailuerView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FailuerView.h; sourceTree = "<group>"; };
+		0605DD9F1EFA5B2300810396 /* FailuerView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FailuerView.m; sourceTree = "<group>"; };
+		0605DDA11EFA5B2F00810396 /* FailuerView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = FailuerView.xib; sourceTree = "<group>"; };
 		0613C58B1EE8FB060044C296 /* CustomTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CustomTableViewCell.h; sourceTree = "<group>"; };
 		0613C58C1EE8FB060044C296 /* CustomTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CustomTableViewCell.m; sourceTree = "<group>"; };
 		0613C58D1EE8FB060044C296 /* CustomTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = CustomTableViewCell.xib; sourceTree = "<group>"; };
@@ -75,6 +88,19 @@
 		061D0F571EF1166D00D82C20 /* TVProgramTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TVProgramTableViewCell.h; sourceTree = "<group>"; };
 		061D0F581EF1166D00D82C20 /* TVProgramTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TVProgramTableViewCell.m; sourceTree = "<group>"; };
 		061D0F591EF1166D00D82C20 /* TVProgramTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = TVProgramTableViewCell.xib; sourceTree = "<group>"; };
+		061E05151EF7D8CD00A2E9D7 /* TVPlayView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TVPlayView.h; sourceTree = "<group>"; };
+		061E05161EF7D8CD00A2E9D7 /* TVPlayView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TVPlayView.m; sourceTree = "<group>"; };
+		061E05181EF7D90000A2E9D7 /* TVPlayView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = TVPlayView.xib; sourceTree = "<group>"; };
+		061E051B1EF7DBC000A2E9D7 /* CLPlayer.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; path = CLPlayer.bundle; sourceTree = "<group>"; };
+		061E051C1EF7DBC000A2E9D7 /* CLPlayerMaskView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CLPlayerMaskView.h; sourceTree = "<group>"; };
+		061E051D1EF7DBC000A2E9D7 /* CLPlayerMaskView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CLPlayerMaskView.m; sourceTree = "<group>"; };
+		061E051E1EF7DBC000A2E9D7 /* CLPlayerView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CLPlayerView.h; sourceTree = "<group>"; };
+		061E051F1EF7DBC000A2E9D7 /* CLPlayerView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CLPlayerView.m; sourceTree = "<group>"; };
+		061E05201EF7DBC000A2E9D7 /* CLSlider.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CLSlider.h; sourceTree = "<group>"; };
+		061E05211EF7DBC000A2E9D7 /* CLSlider.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CLSlider.m; sourceTree = "<group>"; };
+		062020C41EF8F1C000B9DEEC /* TVPlayerViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TVPlayerViewController.h; sourceTree = "<group>"; };
+		062020C51EF8F1C000B9DEEC /* TVPlayerViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TVPlayerViewController.m; sourceTree = "<group>"; };
+		062020C71EF9101700B9DEEC /* TVURL.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = TVURL.plist; sourceTree = "<group>"; };
 		062BD6ED1EF0DC3500D1DD69 /* SubTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SubTableViewController.h; sourceTree = "<group>"; };
 		062BD6EE1EF0DC3500D1DD69 /* SubTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SubTableViewController.m; sourceTree = "<group>"; };
 		062BD6EF1EF0DC3500D1DD69 /* SubTableViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = SubTableViewController.xib; sourceTree = "<group>"; };
@@ -162,9 +188,25 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		061E051A1EF7DBC000A2E9D7 /* CLPlayer */ = {
+			isa = PBXGroup;
+			children = (
+				061E051B1EF7DBC000A2E9D7 /* CLPlayer.bundle */,
+				061E051C1EF7DBC000A2E9D7 /* CLPlayerMaskView.h */,
+				061E051D1EF7DBC000A2E9D7 /* CLPlayerMaskView.m */,
+				061E051E1EF7DBC000A2E9D7 /* CLPlayerView.h */,
+				061E051F1EF7DBC000A2E9D7 /* CLPlayerView.m */,
+				061E05201EF7DBC000A2E9D7 /* CLSlider.h */,
+				061E05211EF7DBC000A2E9D7 /* CLSlider.m */,
+			);
+			name = CLPlayer;
+			path = TV_Program/CLPlayer;
+			sourceTree = "<group>";
+		};
 		062F6DFD1EE6817C00482B78 = {
 			isa = PBXGroup;
 			children = (
+				061E051A1EF7DBC000A2E9D7 /* CLPlayer */,
 				062F6E081EE6817C00482B78 /* TV_Program */,
 				062F6E221EE6817C00482B78 /* TV_ProgramTests */,
 				062F6E2D1EE6817C00482B78 /* TV_ProgramUITests */,
@@ -201,6 +243,7 @@
 				062F6E171EE6817C00482B78 /* LaunchScreen.storyboard */,
 				062F6E1A1EE6817C00482B78 /* Info.plist */,
 				062F6E091EE6817C00482B78 /* Supporting Files */,
+				062020C71EF9101700B9DEEC /* TVURL.plist */,
 			);
 			path = TV_Program;
 			sourceTree = "<group>";
@@ -255,6 +298,8 @@
 				062BD6ED1EF0DC3500D1DD69 /* SubTableViewController.h */,
 				062BD6EE1EF0DC3500D1DD69 /* SubTableViewController.m */,
 				062BD6EF1EF0DC3500D1DD69 /* SubTableViewController.xib */,
+				062020C41EF8F1C000B9DEEC /* TVPlayerViewController.h */,
+				062020C51EF8F1C000B9DEEC /* TVPlayerViewController.m */,
 			);
 			path = Controller;
 			sourceTree = "<group>";
@@ -287,6 +332,12 @@
 				064933871EF7611300DEB56D /* FirstLineTableViewCell.h */,
 				064933881EF7611300DEB56D /* FirstLineTableViewCell.m */,
 				064933891EF7611300DEB56D /* FirstLineTableViewCell.xib */,
+				061E05151EF7D8CD00A2E9D7 /* TVPlayView.h */,
+				061E05161EF7D8CD00A2E9D7 /* TVPlayView.m */,
+				061E05181EF7D90000A2E9D7 /* TVPlayView.xib */,
+				0605DD9E1EFA5B2300810396 /* FailuerView.h */,
+				0605DD9F1EFA5B2300810396 /* FailuerView.m */,
+				0605DDA11EFA5B2F00810396 /* FailuerView.xib */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -438,6 +489,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				0605DDA21EFA5B2F00810396 /* FailuerView.xib in Resources */,
 				061D0F5B1EF1166D00D82C20 /* TVProgramTableViewCell.xib in Resources */,
 				062BD6F11EF0DC3500D1DD69 /* SubTableViewController.xib in Resources */,
 				062F6E191EE6817C00482B78 /* LaunchScreen.storyboard in Resources */,
@@ -446,12 +498,15 @@
 				0647479A1EE7D76E0007C1E9 /* BB645D0094469E9AEF3DC1A7DD179B69.png in Resources */,
 				061A42C61EEA4FA9001F93A0 /* WelComeViewController.xib in Resources */,
 				064747931EE7D0F30007C1E9 /* OtherTableViewController.xib in Resources */,
+				062020C81EF9101700B9DEEC /* TVURL.plist in Resources */,
 				0647477F1EE7D0680007C1E9 /* YSTableViewController.xib in Resources */,
 				064747981EE7D11A0007C1E9 /* CollectTableViewController.xib in Resources */,
+				061E05191EF7D90000A2E9D7 /* TVPlayView.xib in Resources */,
 				062F6E161EE6817C00482B78 /* Assets.xcassets in Resources */,
 				062BD6F61EF0DCC000D1DD69 /* CustomTableHeaderView.xib in Resources */,
 				062F6E141EE6817C00482B78 /* Main.storyboard in Resources */,
 				0613C58F1EE8FB060044C296 /* CustomTableViewCell.xib in Resources */,
+				061E05221EF7DBC000A2E9D7 /* CLPlayer.bundle in Resources */,
 				0647478E1EE7D0E20007C1E9 /* WSTableViewController.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -619,20 +674,26 @@
 				0647477E1EE7D0680007C1E9 /* YSTableViewController.m in Sources */,
 				064747921EE7D0F30007C1E9 /* OtherTableViewController.m in Sources */,
 				064747861EE7D09A0007C1E9 /* SZTableViewController.m in Sources */,
+				061E05231EF7DBC000A2E9D7 /* CLPlayerMaskView.m in Sources */,
 				0649338A1EF7611300DEB56D /* FirstLineTableViewCell.m in Sources */,
 				062F6E4E1EE6863B00482B78 /* TVProgramList.m in Sources */,
 				062F6E0E1EE6817C00482B78 /* AppDelegate.m in Sources */,
 				064747971EE7D11A0007C1E9 /* CollectTableViewController.m in Sources */,
 				0613C58E1EE8FB060044C296 /* CustomTableViewCell.m in Sources */,
+				061E05241EF7DBC000A2E9D7 /* CLPlayerView.m in Sources */,
 				062F6E4B1EE6859D00482B78 /* TVChannelList.m in Sources */,
 				062BD6F41EF0DC9A00D1DD69 /* CustomTableHeaderView.m in Sources */,
+				061E05171EF7D8CD00A2E9D7 /* TVPlayView.m in Sources */,
 				062BD6F01EF0DC3500D1DD69 /* SubTableViewController.m in Sources */,
+				062020C61EF8F1C000B9DEEC /* TVPlayerViewController.m in Sources */,
 				0647478D1EE7D0E20007C1E9 /* WSTableViewController.m in Sources */,
 				062F6E481EE6850000482B78 /* TVCategory.m in Sources */,
 				062F6E0B1EE6817C00482B78 /* main.m in Sources */,
+				0605DDA01EFA5B2300810396 /* FailuerView.m in Sources */,
 				062F6E511EE686DC00482B78 /* TVDataManager.m in Sources */,
 				061D0F5A1EF1166D00D82C20 /* TVProgramTableViewCell.m in Sources */,
 				061A42C51EEA4FA9001F93A0 /* WelComeViewController.m in Sources */,
+				061E05251EF7DBC000A2E9D7 /* CLSlider.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
