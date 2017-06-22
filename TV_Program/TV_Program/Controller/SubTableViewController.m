@@ -140,11 +140,12 @@
     if (!_label) {
         _label = [[UILabel alloc] initWithFrame:CGRectMake(50, 200, 275, 50)];
         self.label.textAlignment = NSTextAlignmentCenter;
-        self.label.text = @"当前暂时没有节目单!";
+        self.label.text = @"当前日期暂时没有节目单哦~";
     }
     return _label;
 }
 
+#pragma mark --表头视图的三个按钮
 - (void)clickYestodayBtn{
     self.currentDate = [NSDate dateWithTimeInterval:-24 * 3600 sinceDate:self.currentDate];
     NSString *btnTitle = [self.headerView setDate:self.currentDate];
@@ -159,10 +160,33 @@
     [self startRequestTVDataWithDate:[[btnTitle componentsSeparatedByString:@"("] firstObject]];
 }
 
+//添加日期选择器
 - (void)clickDatePickerBtn{
-    
+    UIAlertController *alterController = [UIAlertController alertControllerWithTitle:@"\n\n\n\n\n\n\n\n\n" message:nil preferredStyle:UIAlertControllerStyleActionSheet];
+    UIDatePicker *datePicker = [[UIDatePicker alloc] initWithFrame:CGRectMake(0, 0, self.view.bounds.size.width, 200)];
+    datePicker.datePickerMode = UIDatePickerModeDate;
+    datePicker.locale = [[NSLocale alloc] initWithLocaleIdentifier:@"zh-CN"];
+    datePicker.date = self.currentDate;
+    [alterController.view addSubview:datePicker];
+    UIAlertAction *ok = [UIAlertAction actionWithTitle:@"确定" style:UIAlertActionStyleDestructive handler:^(UIAlertAction * _Nonnull action) {
+            NSTimeInterval interval = [datePicker.date timeIntervalSinceDate:self.currentDate];
+            self.currentDate = [NSDate dateWithTimeInterval:interval sinceDate:self.currentDate];
+            NSString *btnTitle = [self.headerView setDate:datePicker.date];
+            [self.headerView.datePickBtn setTitle:btnTitle forState:UIControlStateNormal];
+            [self startRequestTVDataWithDate:[[btnTitle componentsSeparatedByString:@"("] firstObject]];
+    }];
+    UIAlertAction *cancel = [UIAlertAction actionWithTitle:@"取消" style:UIAlertActionStyleCancel handler:^(UIAlertAction * _Nonnull action) {
+        
+    }];
+    [alterController addAction:ok];
+    [alterController addAction:cancel];
+    [self presentViewController:alterController animated:YES completion:nil];
 }
 
+- (void)comparTwoDate:(NSDate *)dateA date:(NSDate *)dateB{
+    NSTimeInterval interval = [dateA timeIntervalSinceDate:dateB];
+    NSLog(@"%lf", interval);
+}
 
 
 
