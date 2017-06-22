@@ -36,14 +36,14 @@
     
     CLPlayerView *playView = [[CLPlayerView alloc] initWithFrame:CGRectMake(0, 0, kScreenWidth, kScreenWidth / 16.0f * 9.0f)];
     playView.center = self.view.center;
-    playView.url = [NSURL URLWithString:_url];
+    playView.url = [NSURL URLWithString:self.url];
     playView.isLandscape = YES;
     _playView = playView;
     [self.view addSubview:_playView];
     [_playView playVideo];
     [_playView backButton:^(UIButton *button) {
         //当视频不是在竖屏界面时，切换到原始竖屏界面。已经是竖屏界面了就dismiss掉
-        if (playView.isFullScreen) {
+        if (_playView.isFullScreen) {
             [_playView originalscreen];
         }else{
             [_playView originalscreen];

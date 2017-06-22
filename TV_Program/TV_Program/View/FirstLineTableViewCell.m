@@ -13,8 +13,8 @@
 @property (weak, nonatomic) IBOutlet UILabel *subLabel;
 @property (weak, nonatomic) IBOutlet UIImageView *playImage;
 @property (weak, nonatomic) IBOutlet UIScrollView *scrollView;
-
 @property (weak, nonatomic) IBOutlet UILabel *hotLabel;
+@property (strong, nonatomic) NSTimer *timer;
 
 @end
 
@@ -22,9 +22,9 @@
 
 - (void)awakeFromNib {
     [super awakeFromNib];
-    self.playImage.tintColor = [UIColor colorWithRed:0 green:160.f/255 blue:233.f/255 alpha:1];
-    self.playImage.image = [[UIImage imageNamed:@"ic_play_arrow"] imageWithRenderingMode:UIImageRenderingModeAlwaysTemplate];
-    self.subLabel.textColor = [UIColor colorWithRed:0 green:160.f/255 blue:233.f/255 alpha:1];
+//    self.playImage.tintColor = [UIColor colorWithRed:0 green:160.f/255 blue:233.f/255 alpha:1];
+//    self.playImage.image = [[UIImage imageNamed:@"ic_play_arrow"] imageWithRenderingMode:UIImageRenderingModeAlwaysTemplate];
+//    self.subLabel.textColor = [UIColor colorWithRed:0 green:160.f/255 blue:233.f/255 alpha:1];
     self.hotLabel.textColor = [UIColor colorWithRed:0 green:160.f/255 blue:233.f/255 alpha:1];
     self.dateLabel.textColor = [UIColor colorWithRed:0 green:160.f/255 blue:233.f/255 alpha:1];
 }
@@ -49,10 +49,12 @@
     self.detailLabel.center = center;
     self.scrollView.contentSize = CGSizeMake(120, 43);
     [self.scrollView addSubview:self.detailLabel];
-    [NSTimer scheduledTimerWithTimeInterval:1.f/30 target:self selector:@selector(moveLabel) userInfo:nil repeats:YES];
+    self.timer = [NSTimer scheduledTimerWithTimeInterval:1.f/30 target:self selector:@selector(moveLabel) userInfo:nil repeats:YES];
 }
 
-
+- (void)dealloc{
+    [self.timer invalidate];
+}
 
 - (void)moveLabel{
     CGRect frame = self.detailLabel.frame;

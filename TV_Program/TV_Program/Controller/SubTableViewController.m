@@ -32,6 +32,8 @@
 @property (nonatomic, strong) NSDate *currentDate;
 
 
+
+
 @end
 
 @implementation SubTableViewController
@@ -43,6 +45,9 @@
     [self startRequestTVDataWithDate:nil];
     
     
+    self.navigationItem.rightBarButtonItem = [[UIBarButtonItem alloc] initWithImage:[UIImage imageNamed:@"play_button"] style:UIBarButtonItemStylePlain target:self action:@selector(clickPlay:)];
+    self.navigationItem.rightBarButtonItem.accessibilityFrame = CGRectMake(0, 0, 44, 44);
+    
 }
 
 - (NSMutableArray *)programDatas{
@@ -53,6 +58,9 @@
 }
 
 - (void)loadHeaderView{
+    
+    
+    
     self.headerView = [[[NSBundle mainBundle] loadNibNamed:@"CustomTableHeaderView" owner:nil options:nil] firstObject];
     [self.headerView.yestodayBtn addTarget:self action:@selector(clickYestodayBtn) forControlEvents:UIControlEventTouchUpInside];
     [self.headerView.tomorrowBtn addTarget:self action:@selector(clickTomorrowBtn) forControlEvents:UIControlEventTouchUpInside];
@@ -180,7 +188,6 @@
         cell.dateLabel.text = [[program.time componentsSeparatedByString:@" "] lastObject];
         cell.detailLabel.text = program.pName;
         [cell moveStart];
-        [cell.playButton addTarget:self action:@selector(clickPlay:) forControlEvents:UIControlEventTouchUpInside];
         return cell;
     }else{
         TVProgramTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"Cell"];

@@ -12,7 +12,6 @@
 
 @property (weak, nonatomic) IBOutlet UILabel *dateLabel;
 @property (strong, nonatomic) UILabel *detailLabel;
-@property (weak, nonatomic) IBOutlet UIButton *playButton;
 
 - (void)moveStart;
 
