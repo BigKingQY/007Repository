@@ -87,21 +87,21 @@ static NSInteger kTimeInterval = 5;
     tabbar.tabBar.items[4].image = [UIImage imageNamed:@"ic_star"] ;
     [[NSNotificationCenter defaultCenter] addObserver:collectvc selector:@selector(getCollectData:) name:@"TVChannelNotification" object:nil];
     
-    [self presentViewController:tabbar animated:YES completion:^{
-        
+    UIViewController *topRootViewController = [[UIApplication  sharedApplication] keyWindow].rootViewController;
+    // 在这里加一个这个样式的循环
+    while (topRootViewController.presentedViewController)
+    {
+        // 这里固定写法
+        topRootViewController = topRootViewController.presentedViewController;
+    }
+    // 然后再进行present操作
+    [topRootViewController presentViewController:tabbar animated:YES completion:^{
         [self.timer invalidate];
     }];
+
     
 }
 
-/*
-#pragma mark - Navigation
 
-// In a storyboard-based application, you will often want to do a little preparation before navigation
-- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
-    // Get the new view controller using [segue destinationViewController].
-    // Pass the selected object to the new view controller.
-}
-*/
 
 @end

@@ -14,9 +14,7 @@
 #import "TVProgramTableViewCell.h"
 #import "FirstLineTableViewCell.h"
 #import "TVPlayerViewController.h"
-
 #import "CLPlayerView.h"
-
 #import "TVPlayView.h"
 
 
@@ -58,9 +56,6 @@
 }
 
 - (void)loadHeaderView{
-    
-    
-    
     self.headerView = [[[NSBundle mainBundle] loadNibNamed:@"CustomTableHeaderView" owner:nil options:nil] firstObject];
     [self.headerView.yestodayBtn addTarget:self action:@selector(clickYestodayBtn) forControlEvents:UIControlEventTouchUpInside];
     [self.headerView.tomorrowBtn addTarget:self action:@selector(clickTomorrowBtn) forControlEvents:UIControlEventTouchUpInside];
@@ -112,10 +107,11 @@
         if (![cDate isEqualToString:pDate]) {
             break;
         }
-        if (cSeconds < pSeconds && self.programDatas[i-1]) {
-            TVProgramList *preProgram = self.programDatas[i-1];
-            [self.programDatas removeObject:preProgram];
-            [self.programDatas insertObject:preProgram atIndex:0];
+        if (cSeconds < pSeconds && self.programDatas[i-1] && i !=0 ) {
+//            TVProgramList *preProgram = self.programDatas[i-1];
+//            [self.programDatas removeObject:preProgram];
+//            [self.programDatas insertObject:preProgram atIndex:0];
+            [self.programDatas exchangeObjectAtIndex:0 withObjectAtIndex:i - 1];
             break;
         }
     }
@@ -247,18 +243,18 @@
     return [today isEqualToString:currentDay];
 }
 
+//
+//- (BOOL)tableView:(UITableView *)tableView canMoveRowAtIndexPath:(NSIndexPath *)indexPath{
+//    return YES;
+//}
 
-- (BOOL)tableView:(UITableView *)tableView canMoveRowAtIndexPath:(NSIndexPath *)indexPath{
-    return YES;
-}
-
-- (UITableViewCellEditingStyle)tableView:(UITableView *)tableView editingStyleForRowAtIndexPath:(NSIndexPath *)indexPath{
-    return UITableViewCellEditingStyleNone;
-}
-
-- (void)tableView:(UITableView *)tableView moveRowAtIndexPath:(NSIndexPath *)sourceIndexPath toIndexPath:(NSIndexPath *)destinationIndexPath{
-    
-}
+//- (UITableViewCellEditingStyle)tableView:(UITableView *)tableView editingStyleForRowAtIndexPath:(NSIndexPath *)indexPath{
+//    return UITableViewCellEditingStyleNone;
+//}
+//
+//- (void)tableView:(UITableView *)tableView moveRowAtIndexPath:(NSIndexPath *)sourceIndexPath toIndexPath:(NSIndexPath *)destinationIndexPath{
+//    
+//}
 
 
 

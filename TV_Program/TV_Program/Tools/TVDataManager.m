@@ -10,7 +10,7 @@
 #import "AFNetWorking/AFNetWorking.h"
 #import "TVChannelList.h"
 
-#define APPKEY @"49184b6c35214e4b81173ba1710123eb"
+#define APPKEY @"a3467ea479124a959e333d5c812d5222"
 #define TVURL @"http://api.avatardata.cn/"
 
 @interface TVDataManager ()
@@ -55,6 +55,7 @@ static TVDataManager *_dataManager;
         failure(error);
     }];
 }
+
 
 - (void)requestWithTVProgramWithCode:(NSString *)code date:(NSString *)date success:(void (^)(id responseObj))suceess failure:(void (^)(NSError *error))failure{
     NSURL *baseURL = [[NSURL alloc] initWithString:[NSString stringWithFormat:@"%@TVTime/TVlist", TVURL]];
