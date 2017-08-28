@@ -41,12 +41,12 @@
     
     [self loadHeaderView];
     [self startRequestTVDataWithDate:nil];
-    
-    
     self.navigationItem.rightBarButtonItem = [[UIBarButtonItem alloc] initWithImage:[UIImage imageNamed:@"play_button"] style:UIBarButtonItemStylePlain target:self action:@selector(clickPlay:)];
     self.navigationItem.rightBarButtonItem.accessibilityFrame = CGRectMake(0, 0, 44, 44);
     
 }
+
+
 
 - (NSMutableArray *)programDatas{
     if (!_programDatas) {
@@ -78,7 +78,7 @@
     [[TVDataManager sharedDataManager] requestWithTVProgramWithCode:self.channel.rel date:date success:^(id responseObj) {
         self.programDatas = [NSMutableArray arrayWithArray:[[TVProgramList sharedData] programListWithJson:responseObj]];
         [hud hideAnimated:YES];
-        [self moveCurrentProgramToFirst];
+        
         [self reloadView];
         
     } failure:^(NSError *error) {
@@ -88,48 +88,44 @@
 }
 
 - (void)moveCurrentProgramToFirst{
-    NSDate *currentDate = [NSDate date];
-    NSDateFormatter *formatter = [[NSDateFormatter alloc] init];
-    formatter.dateFormat = @"yyyy-MM-dd HH:mm";
-    NSString *currentTime = [formatter stringFromDate:currentDate];
-    //NSLog(@"%@", currentTime);
-    NSArray *ctime = [[[currentTime componentsSeparatedByString:@" "] lastObject] componentsSeparatedByString:@":"];
-    NSInteger cSeconds = [ctime[0] integerValue] * 60 + [ctime[1] integerValue];
     
-    NSString *cDate = [[currentTime componentsSeparatedByString:@" "] firstObject];
-    
-    for (int i = 0; i < self.programDatas.count; i++) {
-        TVProgramList *program = self.programDatas[i];
-        NSString *time = [[program.time componentsSeparatedByString:@" "] lastObject];
-        NSString *pDate = [[program.time componentsSeparatedByString:@" "] firstObject];
-        NSArray *ptime = [time componentsSeparatedByString:@":"];
-        NSInteger pSeconds = [ptime[0] integerValue] * 60 + [ptime[1] integerValue];
-        if (![cDate isEqualToString:pDate]) {
-            break;
+    if ([self isToday:self.currentDate]) {
+        NSDate *currentDate = [NSDate date];
+        NSDateFormatter *formatter = [[NSDateFormatter alloc] init];
+        formatter.dateFormat = @"yyyy-MM-dd HH:mm";
+        NSString *currentTime = [formatter stringFromDate:currentDate];
+        //NSLog(@"%@", currentTime);
+        NSArray *ctime = [[[currentTime componentsSeparatedByString:@" "] lastObject] componentsSeparatedByString:@":"];
+        NSInteger cSeconds = [ctime[0] integerValue] * 60 + [ctime[1] integerValue];
+            
+        int k = 0;
+        for (int i = 0; i < self.programDatas.count; i++) {
+            TVProgramList *program = self.programDatas[i];
+            NSString *time = [[program.time componentsSeparatedByString:@" "] lastObject];
+            NSArray *ptime = [time componentsSeparatedByString:@":"];
+            NSInteger pSeconds = [ptime[0] integerValue] * 60 + [ptime[1] integerValue];
+            if (cSeconds < pSeconds) {
+                k = i;
+                break;
+            }
+            
         }
-        if (cSeconds < pSeconds && self.programDatas[i-1] && i !=0 ) {
-//            TVProgramList *preProgram = self.programDatas[i-1];
-//            [self.programDatas removeObject:preProgram];
-//            [self.programDatas insertObject:preProgram atIndex:0];
-            [self.programDatas exchangeObjectAtIndex:0 withObjectAtIndex:i - 1];
-            break;
-        }
+        [self.programDatas exchangeObjectAtIndex:0 withObjectAtIndex:k-1];
     }
 }
 
 - (void)reloadView{
     if (self.programDatas.count != 0) {
-        
         if ([self.view.subviews containsObject:self.label]) {
             [self.label removeFromSuperview];
         }
-        [self.tableView reloadData];
+        [self moveCurrentProgramToFirst];
     }else{
         if (![self.view.subviews containsObject:self.label]) {
             [self.view addSubview:self.label];
         }
-        [self.tableView reloadData];
     }
+    [self.tableView reloadData];
 }
 
 -(UILabel *)label{
@@ -200,11 +196,11 @@
 
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
-    
+    TVProgramList *program = self.programDatas[indexPath.row];
     //判断是否是第一行和是否是今天
     if (indexPath.row == 0 && [self isToday:self.currentDate]) {
         FirstLineTableViewCell *cell = [[[NSBundle mainBundle] loadNibNamed:@"FirstLineTableViewCell" owner:nil options:nil] firstObject];
-        TVProgramList *program = self.programDatas[indexPath.row];
+        
         cell.dateLabel.text = [[program.time componentsSeparatedByString:@" "] lastObject];
         cell.detailLabel.text = program.pName;
         [cell moveStart];
@@ -214,7 +210,6 @@
         if (cell == nil) {
             cell = [[[NSBundle mainBundle] loadNibNamed:@"TVProgramTableViewCell" owner:nil options:nil] firstObject];
         }
-        TVProgramList *program = self.programDatas[indexPath.row];
         cell.dateLabel.text = [[program.time componentsSeparatedByString:@" "] lastObject];
         cell.detailLabel.text = program.pName;
         
