@@ -86,7 +86,8 @@ static NSInteger kTimeInterval = 5;
     tabbar.tabBar.items[3].image = [UIImage imageNamed:@"ic_more"] ;
     tabbar.tabBar.items[4].image = [UIImage imageNamed:@"ic_star"] ;
     [[NSNotificationCenter defaultCenter] addObserver:collectvc selector:@selector(getCollectData:) name:@"TVChannelNotification" object:nil];
-    [self presentViewController:tabbar animated:YES completion:^{
+    
+    [self.view.window.rootViewController presentViewController:tabbar animated:YES completion:^{
         [self.timer invalidate];
     }];
 //    UIViewController *topRootViewController = [[UIApplication  sharedApplication] keyWindow].rootViewController;
